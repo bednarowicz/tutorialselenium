@@ -19,7 +19,6 @@ public class XpathOnMyOwn {
         driver.findElement(recenzje).click();
         By teksty = By.xpath("//svg[@href='/teksty']");
         driver.findElement(teksty).click();
-        /html/body/div[1]/header/div/nav/div/a[3]
 
     }
 }
