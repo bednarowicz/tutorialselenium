@@ -1,8 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
@@ -21,8 +18,14 @@ public class BasicActionsTest {
         WebElement userNameInput = driver.findElement(By.name("username"));
         userNameInput.clear();
         userNameInput.sendKeys("Moj login");
-        userNameInput.sendKeys(Keys.TAB);
-        userNameInput.sendKeys(Keys.TAB);
+        System.out.println(userNameInput.getText());
+        System.out.println(userNameInput.getAttribute("value"));
+        userNameInput.sendKeys(Keys.ENTER);
+        //userNameInput.sendKeys(Keys.TAB);
+        Alert firstAlert = driver.switchTo().alert();;
+        firstAlert.accept();
+        driver.switchTo().alert().accept();
+
 
         driver.findElement(By.cssSelector("[type='checkbox']")).click();
         driver.findElement(By.cssSelector("[value='male']")).click();
@@ -39,6 +42,11 @@ public class BasicActionsTest {
         }
         optionsChecker(selectCar, "auto");
         optionsChecker(selectCar, "Volvo");
+
+        WebElement para = driver.findElement(By.cssSelector(".topSecret"));
+        System.out.println("By text: " + para.getText());
+        System.out.println("By text: " + para.getAttribute("value"));
+        System.out.println("By text: " + para.getAttribute("textContent"));
 
 
     }
